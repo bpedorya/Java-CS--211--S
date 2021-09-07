@@ -97,6 +97,52 @@ public class BankAccountDriver {
 		{
 			System.out.println("New checking account:  " + checkingAccount2.toString() + " belong to " + checkingAccount1.toString());
 		}
+			
+		// DRIVER PROGRAM
+		Account[] accArr = new Account[10];
+		accArr[0] = checkingAccount2;
+		accArr[1] = checkingAccount1;
+		driver(accArr);
+		
 	}
+	
+	
+	//******************** DRIVER() *******************************
+	/*
+	 * Driver program method
+	 */
+	private static void driver(Account ... childrenAccounts) 
+	{
+		for (int i = 0; i < childrenAccounts.length; i++)
+		{
+			if (childrenAccounts[i] instanceof Checking)
+			{
+				Checking checkingAcc = (Checking) childrenAccounts[i];
+				if (!checkingAcc.isOverdraftProtection()) 
+				{
+					System.out.println("Current balance on your checkingAccount: " + checkingAcc.getBalance());
+					double withdrawalAmount = 1000000000.99;
+					checkingAcc.withdrawal(withdrawalAmount);
+					
+					System.out.println("Current balance of checking Account: " + checkingAcc.getBalance());
+					System.out.println("That is what can happen if you dont set overdraft protection on you checking account");
+				}
+			}
+			
+			if (childrenAccounts[i] instanceof Credit)
+			{
+				Credit creditAcc = (Credit) childrenAccounts[i];
+				// TODO: fill in
+			}
+			
+			if (childrenAccounts[i] instanceof Savings)
+			{
+				Savings savingsAcc = (Savings) childrenAccounts[i];
+				// TODO: fill in
+			}
+			
+		}
+	} // end driver()
+
 
 }
